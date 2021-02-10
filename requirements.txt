@@ -41,6 +41,7 @@ Git
 
 21 npm i -D stylelint stylelint-config-sass-guidelines
 22 npm install stylelint-order --save-dev
+23 npm install gh-pages --save-dev 
 ---------------------------------------------
 1 git status
 2 git add . 
@@ -49,12 +50,12 @@ Git
 
 5 git checkout main  (выйти из рабочей ветки)
 6 git git pull (обновляем ветку)
-7 git branch --all
-8 git checkout remotes/origin/webpack
+7 git branch --all (показать все ветки)
+8 git checkout remotes/origin/webpack ( перейти на нужную ветку 1 шаг)
 9 git branch --all
-10 git checkout -b webpack
-11 git pull+git push
-12 git checkout webpack
+10 git checkout -b webpack ( перейти на нужную ветку 2 шаг)
+11 git checkout webpack (после полной сенхронизации между ветками если выпадает HEAD detached at )
+ 
 
 
 13 git add . 

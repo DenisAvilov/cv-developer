@@ -28,7 +28,7 @@ const plagins = () => {
     new CopyPlugin({
       patterns: [
         {from: path.resolve(__dirname, 'src/assets'),
-          to: path.resolve(__dirname, 'dist')},
+          to: path.resolve(__dirname, 'build')},
       ],
     }),
     require('postcss-preset-env')({
@@ -54,13 +54,13 @@ module.exports = {
   entry: ['@babel/polyfill', './scss/index.scss', './js/index.js'],
   output: {
     filename: './js/' + filename('js'),
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'build'),
     publicPath: '',
   },
   devtool: isDev ? 'source-map' : false,
   devServer: {
     historyApiFallback: true,
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, 'build'),
     compress: true,
     hot: true,
     port: 3000,

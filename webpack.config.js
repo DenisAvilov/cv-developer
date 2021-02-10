@@ -4,31 +4,18 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
-const {Autoprefixer} = require('autoprefixer')
+
 
 const isProd = process.env.NODE_ENV === 'production'
 const isDev = !isProd
-console.log(isDev)
-const filename = x => isDev ? `bundle.${x}` : `bundle.[contenthash].${x}`
-module.exports = {
-  context: path.resolve(__dirname, 'src'),
-  mode: 'development',
-  entry: ['@babel/polyfill', './index.js'],
-  output: {
-    filename: filename('js'),
-    path: path.resolve(__dirname, 'dist'),
-    assetModuleFilename: 'img/[hash][ext][query]'
-  },
-  devtool: isDev ? 'source-map' : false,
-  devServer: {
-    contentBase: path.join(__dirname, 'src'),
-    // compress: true,
-    port: 3000,
-    open: true
-  },
-  plugins: [
+
+const filename = ext => isDev ? `[name].${ext}` : `bundle.[contenthash].${ext}`
+
+const plagins = () => {
+  const basePlagins = [
     new HtmlWebpackPlugin({
-      template: 'index.html',
+      template: path.resolve(__dirname, 'src/index.html'),
+      filename: 'index.html',
       minify: {
         removeComments: isProd,
         collapseWhitespace: isProd
@@ -36,33 +23,68 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: filename('css')
+      filename: (`./css/${filename('css')}`)
     }),
     new CopyPlugin({
       patterns: [
-        {from: path.resolve(__dirname, 'src/favicon.ico'),
+        {from: path.resolve(__dirname, 'src/assets'),
           to: path.resolve(__dirname, 'dist')},
-        {from: path.resolve(__dirname, 'src/img'),
-          to: path.resolve(__dirname, 'dist/img')}
       ],
     }),
-    new ImageMinimizerPlugin({
-      minimizerOptions: {
-        plugins: [
-          ['jpegtran', {progressive: true}],
-        ]
-      }})
-  ],
+    require('postcss-preset-env')({
+      browsers: 'last 2 versions',
+    }),
+  ]
+  if (isProd) {
+    basePlagins.push(
+        new ImageMinimizerPlugin({
+          minimizerOptions: {
+            plugins: [
+              ['jpegtran', {progressive: true}],
+            ]
+          }})
+    )
+  }
+  return basePlagins
+}
+
+module.exports = {
+  context: path.resolve(__dirname, 'src'),
+  mode: 'development',
+  entry: ['@babel/polyfill', './scss/index.scss', './js/index.js'],
+  output: {
+    filename: './js/' + filename('js'),
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '',
+  },
+  devtool: isDev ? 'source-map' : false,
+  devServer: {
+    historyApiFallback: true,
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    hot: true,
+    port: 3000,
+    open: true
+  },
+  plugins: plagins(),
   module: {
     rules: [
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.html$/,
+        loader: 'html-loader'
+      },
+      {
+        test: /\.s[ac]ss*$/i,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            options: { }
+            options: {
+              publicPath: (resourcePath, context) =>{
+                return path.relative(path.dirname(resourcePath), context) + '/'
+              }
+            }
           },
-          'css-loader',
+          {loader: 'css-loader', options: {sourceMap: true, importLoaders: 1}},
           'sass-loader',
         ],
       },
@@ -77,11 +99,24 @@ module.exports = {
         }
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        type: 'asset/resource',
+        test: /\.(?:|gif|jpg|jpeg|png|svg)$/,
         use: [
           {
             loader: 'file-loader',
+            options: {
+              name: `./img/${filename( '[ext]' )}`
+            }
+          },
+        ],
+      },
+      {
+        test: /\.(?:|woff2)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: `./fonts/${filename( '[ext]' )}`
+            }
           },
         ],
       },

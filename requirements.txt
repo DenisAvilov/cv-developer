@@ -17,7 +17,9 @@ Git
 		1 -----------------
 -------------------------------------------------------------------------
 1 npm install webpack webpack-cli --save-dev
+1.1 npm i normalize.css
 2 npm install --save-dev html-webpack-plugin
+2.1 npm i html-loader --save-dev
 3 npm install --save-dev mini-css-extract-plugin
 4 npm install --save-dev css-loader
 5 npm install sass-loader sass --save-dev
@@ -34,4 +36,28 @@ Git
 16 npm install image-minimizer-webpack-plugin --save-dev
 17 npm install imagemin-gifsicle imagemin-jpegtran imagemin-optipng imagemin-svgo --save-dev
 18 npm install file-loader --save-dev
+19 npm install optimize-css-assets-webpack-plugin --save-dev
+20 npm install terser-webpack-plugin --save-dev
 
+21 npm i -D stylelint stylelint-config-sass-guidelines
+22 npm install stylelint-order --save-dev
+---------------------------------------------
+1 git status
+2 git add . 
+3 git commit -m "Finish project config"
+4 git push -u origin webpack
+
+5 git checkout main  (выйти из рабочей ветки)
+6 git git pull (обновляем ветку)
+7 git branch --all
+8 git checkout remotes/origin/webpack
+9 git branch --all
+10 git checkout -b webpack
+11 git pull+git push
+12 git checkout webpack
+
+
+13 git add . 
+14 git commit -m "Finish project config"
+15 Отменить не запушиный коммит: git reset --soft HEAD^ 
+16 Откатиться назад на 2 коммита: git reset --hard HEAD~2

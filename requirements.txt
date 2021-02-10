@@ -53,7 +53,7 @@ Git
 7 git branch --all (показать все ветки)
 8 git checkout remotes/origin/webpack ( перейти на нужную ветку 1 шаг)
 9 git branch --all
-10 git checkout -b webpack ( перейти на нужную ветку 2 шаг)
+10 git checkout webpack ( перейти на нужную ветку 2 шаг)
 11 git checkout webpack (после полной сенхронизации между ветками если выпадает HEAD detached at )
  
 

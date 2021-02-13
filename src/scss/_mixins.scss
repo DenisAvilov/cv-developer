@@ -1,3 +1,21 @@
+@import './vars';
+// @import './breakpoints';
 
-@import "./breakpoint";
 
+@mixin border-bottom {
+    border-bottom: 1px solid $color-border;
+}
+@mixin border-left {
+    border-left: 1px solid $color-border;
+}
+@mixin border-right {
+    border-right: 1px solid $color-border;
+}
+@mixin border-top {
+    border-top: 1px solid $color-border;
+}
+
+@mixin border-top-and-botom {
+    @include border-top; 
+    @include border-bottom;
+}

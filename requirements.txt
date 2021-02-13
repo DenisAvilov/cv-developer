@@ -62,3 +62,8 @@ Git
 14 git commit -m "Finish project config"
 15 Отменить не запушиный коммит: git reset --soft HEAD^ 
 16 Откатиться назад на 2 коммита: git reset --hard HEAD~2
+
+------------------------------------
+html-layout
+1 Material+Icons
+

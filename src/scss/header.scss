@@ -1,0 +1,25 @@
+@import 'vars';
+@import 'mixins';
+@import './breakpoints';
+
+.cv__header {    
+    border-bottom: 1px solid $color-border;
+    border-left: 1px solid $color-border;
+    border-right: 1px solid $color-border;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+    
+    .user {
+        justify-content: space-between;
+        
+        header {
+            flex-grow: 1;
+            justify-content: space-between;
+            margin-left: 25px;
+        }
+    }
+}
+
+
+

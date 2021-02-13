@@ -1,0 +1,17 @@
+@import 'vars';
+@import 'mixins';
+@import './breakpoints';
+
+.cv__body {
+    border: 1px solid $color-border;
+    display: grid;
+    grid-gap: 10px;
+    padding-top: 10px;
+    position: relative;
+    z-index: 1;
+
+    .separate {
+        @include border-bottom;
+        display: block;
+    }
+}

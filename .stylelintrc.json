@@ -4,10 +4,12 @@
     "indentation": null,
     "number-leading-zero": null,
     "dollar-variable-colon-space-before": "never",
-    "selector-class-pattern": "^(?:u|is|has)-[a-z][a-zA-Z0-9]*$|^(?!u|is|has)[a-zA-Z][a-zA-Z0-9]*(?:-[a-z][a-zA-Z0-9]*)?(?:--[a-z][a-zA-Z0-9]*)?$",
+    "selector-class-pattern": "",
     "string-quotes": "single",
     "dollar-variable-pattern": "^[a-z]+([a-z0-9-]+[a-z0-9]+)?$",
     "dollar-variable-colon-space-after": "always",
-    "shorthand-property-no-redundant-values": true    
+    "shorthand-property-no-redundant-values": true,
+    "max-nesting-depth": null
+      
     }
 } 

@@ -6,6 +6,7 @@
 
 * ul {
   list-style-type: none;
+  margin-left: -10px;
   padding-left: 0;
 }
 
@@ -13,24 +14,89 @@
   box-sizing: border-box;  
 }
 
+*a, *ul {
+  font-family: $font-family-link-basic;
+}
+
 *a {
   color: $acent;
+  font-weight: 800;
+  position: relative;
   text-decoration: none;
-  
+  transition: $transition-link-out;
+
   &:hover {
    color: $color-acent-hover;
   }
 
-  &:active {
-  
+  &:active {  
    text-shadow: 1px 0 1px $color-shadow;
+  } 
+}
+
+.a__after {
+  // position: relative;
+
+    &::after {    
+      background-color: $color-link-after;
+      bottom: 0;
+      content: '';
+      height: 1px;
+      left: 70%;
+      position: absolute;
+      right: 0;
+      transition: $transition-link-out;
+      
+  }
+
+    &__itincubator::after {
+      right: 17px;
+    }
+  
+    &__lavrik::after {
+     right: 7px;
+    }
+
+
+  &:hover::after {
+    background-color: $color-acent-hover;
+    left: 0;
+}
+}
+
+*p {
+  font-size: 1.1em;
+  line-height: 1.4em;
+}
+
+.icons-phone {
+  color: rgb(121, 24, 218);
+  height: 24px;
+  width: 24px;
+}
+
+@media (min-width: 320px) {  
+  .icons-phone {
+    height: 16px;
+    width: 16px;
   }
 }
 
+
+.download {
+  border-radius: 10em;
+  height: 24px;
+  margin-left: 2px;
+  margin-right: 8px;
+  width: 24px;
+} 
+
 body { 
-  font-family: 'Big Shoulders Display', cursive;
-  font-size: 100%;
+  font-family: $font-family-body-basic;
+  font-size: 110%;
+  position: relative;
 }
+
 
 .cv {  
   background-image: url('./../img/1.jpg');
@@ -58,7 +124,7 @@ body {
 
 h1 {
   color: $acent;
-  font-family: 'Big Shoulders Display', cursive;
+  font-family: $font-family-link-basic;
 }
 
 .h2 {
@@ -70,7 +136,21 @@ h1 {
   flex-wrap: wrap;
 }
 
+.flex-inline {
+  display: inline-flex;
+  flex-direction: column;
+}
+
 .between {
   justify-content: space-between;  
 }
 
+.title {
+  align-items: baseline;
+  justify-content: space-between;
+
+  span {
+    font-family: $font-fameli-title-span, cursive;
+    font-size: 0.8em;
+  }
+}

@@ -3,25 +3,31 @@
 // Small devices (landscape phones, 320px and up)
 
 @media (min-width: 320px) { 
+ .ua {
+    display: none;
+ }
+
 .cv__header {
    justify-content: center;
    margin-left: 10px;
    margin-right: 10px;
+   padding-top: 10px;
   
 
    .user { 
       justify-content: center;
       margin-bottom: 4px;
+      
+      
 
       header { 
          margin-left: 0;
-         padding: 0 10px;
+         padding: 20px 10px 0;
      }
 
       .icon {
+         align-self: auto;
          flex-direction: column;
-        
-         padding-top: 25px;
 
          & > div { 
             margin-bottom: 10px;
@@ -29,6 +35,7 @@
          }
 
          ul {
+            margin-bottom: 0;
             margin-left: auto;
             margin-top: 0;
          }
@@ -40,16 +47,27 @@
          a {
             align-items: center;
             display: flex;
+            font-size: 0.9em;
             justify-content: flex-end;
          }
 
          span {
-         margin-left: 10px;   
+            font-size: 1em;
+            margin-left: 2px;
          }
       } 
 
       &__name {
          margin-bottom: 25px;
+         
+         p {
+            font-size: 0.7em;
+         }
+
+         h1 {
+            font-size: 1.4em;
+            margin-top: 0;
+         }
       }
 
       &__logo > img {
@@ -61,25 +79,36 @@
 
 }
 
-.cv__body {    
+.cv__body {
+   grid-gap: 10px;
    margin-left: 10px;
    margin-right: 10px;
+ 
+   p {
+      font-size: 0.9em;
+   }
+
    
 .h2 {
    text-align: center;
 }
 
+
+
 .item {
    padding: 10px 15px;
+
+   &__subtitle {
+      margin-top: 0;
+   }
 }
 
 .item-1 {
    @include border-bottom;
-   border-right: 0 solid inherit;
+   @include border-top-and-botom;   
    margin-left: 10px;
    margin-right: 10px;
 }
-
 
 .item-2 {
    @include border-bottom;    
@@ -88,13 +117,11 @@
 }
 
 .item-3 {
-   @include border-top-and-botom;
    margin-left: 10px;
    margin-right: 10px;
 }
 
-.item-4 {
-   @include border-top-and-botom;
+.item-4 {   
    margin-left: 10px;
    margin-right: 10px;
 }
@@ -106,13 +133,23 @@
    
    li {
       margin-bottom: 10px;
+
+      &:hover a {
+       color: $color-acent-hover;
+      
+
+      }
+    
    }
 
    a {
       align-items: center;
       background-color: rgb(17, 17, 17);
+      color: $acent-link;
       display: flex;
       padding: 5px;
+      transition: $transition-link-out;
+
       
       & span {
          margin-right: 10px;
@@ -125,13 +162,34 @@
    background-color: $color-acent-hover;
    display: flex;
    justify-content: center;
+   margin-left: -10px;
+   margin-right: -10px;
+   padding: 0 15px;
    text-align: center;
    z-index: 1;
+
+
+   strong {
+      font-size: 0.7em; 
+   }
+
+   p {
+      line-height: 0.7em;
+   }
+
 }
 
 .skills {
       margin-bottom: 10px;
       margin-left: -10px;
+
+      &__alignItems {
+         align-items: flex-end;
+      
+         span {
+            margin-right: 5px;
+         }
+      }
 
       li {           
       font-size: 22px;
@@ -166,8 +224,29 @@
    
    }
 }
+
+
 }
+
+@media only screen and (min-width: 576px) and (max-width: 618px) {
+   .cv__body {
+      .item {
+         padding: 10px 30px;
+      }
+   
+   }
 }
+
+@media (min-width: 618px) {
+   .cv__body {
+      .item {
+         padding: 10px 40px;
+      }
+   
+   }
+}
+
+
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
    .cv__header { 
@@ -177,59 +256,86 @@
          justify-content: center;
          margin-left: 40px;
 
+         &__name {            
+            margin-bottom: 0;
+
+            p {
+               font-size: 0.9em;
+            }
+            
+         }
+
          header {
             flex-grow: 1;
             justify-content: space-between;
             margin-left: 0;
-      }
+
+            h1 {
+               font-size: 2em;
+            }
+         }
    
          .icon {
+            align-self: center;
             margin-left: auto;
             margin-right: 40px;
+
+            span {
+               margin-left: 10px;   
+               }
+
+          
+
          }
          
-         &__name {
-            margin-bottom: 0;
-            
-         }
+        
       }
    }
 
    .cv__body {
-   grid-template-columns: [col-1-start] 1fr [col-2-start] 1fr [col-2-end];
-   grid-template-rows: [row-1-start] 1fr  [row-2-start] 1fr [row-3-start] 1fr  [row-4-start] 50px [row-4-end];
- 
+      grid-gap: 20px;
+      grid-template-columns: [col-1-start] 1fr [col-2-start] 1fr [col-2-end];
+      grid-template-rows: [row-1-start] 1fr  [row-2-start] 1fr [row-3-start] 1fr  [row-4-start] 50px [row-4-end];
+   
+      .item {
+         padding: 10px 15px;         
+      }
+
+      p {
+      font-size: 100%;
+      }
+
    .h2 {
       text-align: left;
-     }
-
-   .item {
-      padding: 10px 40px;
-   }
+      }
+   
 
    .item-1 {
       @include border-bottom;
-      border-right: 1px solid $color-border;
-      margin-left: 10px;
+      @include border-left; 
+      border-top: 0 solid;
+      margin-left: 0;
    }
 
    .item-2 {
       @include border-bottom;
-      @include border-left;
-      margin-right: 10px;
+      @include border-right;
+      margin-right: 0;
    }
 
    .item-3 {
       @include border-top-and-botom;
       @include border-right;
       margin-left: 10px;
+      margin-right: 0;
    }
    
    .item-4 {
       @include border-top-and-botom;
       @include border-left; 
-       grid-column: col-2-start / col-2-end;
-       grid-row: row-2-start/ row-4-start;
+      grid-column: col-2-start / col-2-end;
+      grid-row: row-2-start/ row-4-start;
+      margin-left: 0;
       margin-right: 10px;
    }
    
@@ -237,6 +343,7 @@
       @include border-top-and-botom;
       @include border-right;
       margin-left: 10px;
+      margin-right: 0;
       
       li {
       margin-bottom: 10px;
@@ -261,19 +368,28 @@
       grid-column: 1 / 3;
       grid-row: 4;
       justify-content: center;
+     
       z-index: 1;
+
+      strong {
+         font-size: 0.9em; 
+      }
+   
+      p {
+         line-height: 0.9em;
+      }
    }
 
    .skills {
       margin-bottom: 10px;
       margin-left: -10px;
-      
+         }
+
          li {           
             font-size: 22px;
             margin-bottom: 10px;
             margin-left: 10px;
             min-width: 100px;
-
          }       
    }  
    
@@ -311,16 +427,23 @@
    .cv__header { 
       .user {        
          justify-content: space-between;
+         margin-bottom: 0;
         
       }
    }
 
    .cv__body {
+      .item {
+         padding: 10px 30px;         
+      }
+
       .skills {         
          li {
             min-width: 130px;   
          }       
    } 
+
+
    }
    }
 

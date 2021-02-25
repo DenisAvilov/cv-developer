@@ -67,3 +67,29 @@ Git
 html-layout
 1 Material+Icons
 
+                          framework-start
+
+|core
+	|1 DomListener.js
+	|2 CVComponent.js extends DomListener.js
+
+|components
+	|Header.js extends CVComponent.js
+	|Body.js   extends CVComponent.js	
+	|Resume.js Class 
+
+|src 
+	|index.js
+	         || import Resume.js  new Class()  __proto__ CVComponent 
+
+17 @babel/plugin-proposal-class-properties
+ 
+18 В ДОМ реализовать проверку при входящих данных
+  на селектор или ноду
+19 Реализовать методы в ДОМ
+   html() 
+   clear()
+   append()
+
+20 initDomListeners
+   remuveDomListeners

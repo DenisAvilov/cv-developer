@@ -93,3 +93,8 @@ html-layout
 
 20 initDomListeners
    remuveDomListeners
+
+methods in js:
+mousedown
+str.charAt(index)
+str.toUpperCase ()

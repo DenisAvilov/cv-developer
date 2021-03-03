@@ -31,13 +31,23 @@ class Dom {
     this.html('')
     return this
   }
+
+  on(type, method) {
+    this.$elDom.addEventListener(type, method)
+  }
+
+  off(type, method) {
+    this.$elDom.removeEventListener(type, method)
+  }
 }
+
+
 
 export const $ = (selectorOrNode) => {
   return new Dom(selectorOrNode)
 }
 
-$.create = (element, className = '') => {
+$.createElementAndClassName = (element, className = '') => {
   const root = document.createElement(element)
   if (className) {
     root.classList.add(className)

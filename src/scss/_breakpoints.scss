@@ -3,28 +3,31 @@
 // Small devices (landscape phones, 320px and up)
 
 @media (min-width: 320px) { 
+   body {
+      font-size: 97%;
+   }
+
  .ua {
     display: none;
  }
 
 .cv__header {
+   
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
+   margin-bottom: 10px;
    margin-left: 10px;
    margin-right: 10px;
-   padding-top: 10px;
-  
+   padding: 10px 0;
 
    .user { 
       justify-content: center;
       margin-bottom: 4px;
-      
-      
 
       header { 
          margin-left: 0;
-         padding: 20px 10px 0;
+         padding: 0 10px;
      }
 
       .icon {
@@ -72,13 +75,49 @@
          }
       }
 
-      &__logo > img {
+      &__logo {        
          height: 150px;
-         object-fit: fill;
-         width: 300px;
-      }
-   }
+         width: 280px;
 
+         .img-сontainer {         
+            height: 150px;
+            // overflow: hidden;
+            position: relative;
+            width: 280px;
+         }
+
+         .img-container-after,
+         .img-container-before {
+            height: 150px;
+            overflow: hidden;
+            position: absolute;
+            width: 280px;
+         }
+         
+         .img-container-before {
+            width: 10%;
+         }
+
+         .after,
+         .before {
+            height: 150px;
+            object-fit: fill;
+            width: 280px;
+         }
+
+         .slider {
+            background-color: #fff;
+            height: 150px;
+            left: 10%;
+            position: absolute;
+            top: 0;
+            transform: translate(-50%, 0%);
+            width: 4px;
+            z-index: 10;
+         }
+
+      } 
+   }
 }
 
 .cv__body {
@@ -229,7 +268,6 @@
 
 
 }
-
 @media only screen and (min-width: 576px) and (max-width: 618px) {
    .cv__body {
       .item {
@@ -238,7 +276,6 @@
    
    }
 }
-
 @media (min-width: 618px) {
    .cv__body {
       .item {
@@ -247,16 +284,22 @@
    
    }
 }
-
-
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
+   body {
+      font-size: 110%;
+   }
+
    .cv__header { 
       .user {
          flex-direction: row-reverse;
          flex-grow: 1;
          justify-content: center;
          margin-left: 40px;
+
+         &__logo {
+            margin-right: 30px;
+         }
 
          &__name {            
             margin-bottom: 0;
@@ -283,12 +326,9 @@
             margin-right: 40px;
 
             span {
-               margin-left: 10px;   
+               margin-left: 10px;
                }
-
-          
-
-         }
+            }
          
         
       }
@@ -427,10 +467,36 @@
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
    .cv__header { 
+      header {
+         padding: 0;
+      }
+
       .user {        
          justify-content: space-between;
          margin-bottom: 0;
-        
+
+         &__logo {        
+           
+            width: 280px;
+   
+            .img-сontainer {       
+               width: 300px;
+            }
+   
+            .img-container-after,
+            .img-container-before {
+               width: 300px;
+            }            
+            
+            .img-container-before {
+               width: 10%;
+            }
+
+            .after,
+            .before {              
+               width: 300px;
+            } 
+         } 
       }
    }
 

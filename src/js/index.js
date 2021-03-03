@@ -1,6 +1,6 @@
 import {Resume} from './../components/Resume'
-import {Header} from './../components/Header'
-import {Body} from './../components/Body'
+import {Header} from './../components/header/Header'
+import {Body} from './../components/body/Body'
 import './../scss/index.scss'
 
 

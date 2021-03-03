@@ -3,10 +3,7 @@
 @import './breakpoints';
 
 .cv__header {    
-    border-bottom: 1px solid $color-border;
-    border-left: 1px solid $color-border;
-    border-right: 1px solid $color-border;
-    margin-bottom: 10px;
+    border: 1px solid $color-border;
     position: relative;
     z-index: 1;
 

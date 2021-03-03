@@ -92,8 +92,7 @@
 } 
 
 body { 
-  font-family: $font-family-body-basic;
-  font-size: 110%;
+  font-family: $font-family-body-basic;  
   position: relative;
 }
 
@@ -105,6 +104,7 @@ body {
   background-size: cover;
   margin: 0 auto;
   max-width: 1100px;
+  padding-top: 10px;
   position: relative;
 
   &::after {

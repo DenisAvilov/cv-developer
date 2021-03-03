@@ -2,7 +2,7 @@ import {DomListener} from './DomListener';
 
 export class CVComponent extends DomListener {
   constructor($root, options = {}) {
-    super($root, options.listeners)
+    super($root, options.listeners, options.name)
   }
 
   // Возвращает шаблон компонента
@@ -12,5 +12,10 @@ export class CVComponent extends DomListener {
   // Назначаем слушателей для каждого компонента
   init() {
     this.initDOMListeners()
+    
+  }
+
+  remuve() {
+    this.remuveDomListeners()
   }
 }

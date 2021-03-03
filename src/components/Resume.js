@@ -2,28 +2,33 @@ import {$} from './../core/dom'
 export class Resume {
   constructor(selector, options) {
     this.$selector = $(selector)
-    this.$component = options.component || []
+    this.$components = options.component || []
   }
 
   getRoot() {
     // create root node
-    const root = $.create('div', 'cv')
-    this.component = this.$component.map( Component => {
-      // Использую статический метод класса
-      const rootClassName = $.create('section', Component.className)
-      // Получаю инстанс
-      const component = new Component(this.$component)
-      // отрисовую HTML
-      root.append(rootClassName.html(component.toHtml()))
-      return component
+    const root = $.createElementAndClassName('div', 'cv')
+
+    this.$components = this.$components.map( Component => {
+      const el = $.createElementAndClassName('section', Component.className)
+      const instance = new Component(el)
+      if ( instance.name) {
+        window['c' + instance.name] = instance
+      }
+      el.html(instance.toHtml())
+      root.append(el)
+      return instance
     });
 
+    // Подготовка структуры для событий
     return root
   }
 
   render() {
     this.$selector.append(this.getRoot())
-    this.component.forEach(element => element.init());
+    this.$components.forEach(element => element.init());
+    window.$ = this.$components
   }
 }
+
 

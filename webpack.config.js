@@ -51,7 +51,7 @@ const plagins = () => {
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
-  entry: ['@babel/polyfill', './scss/index.scss', './js/index.js'],
+  entry: ['@babel/polyfill', './scss/index.scss', './index.js'],
   output: {
     filename: './js/' + filename('js'),
     path: path.resolve(__dirname, 'build'),

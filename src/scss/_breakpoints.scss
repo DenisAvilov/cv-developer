@@ -81,7 +81,7 @@
 
          .img-сontainer {         
             height: 150px;
-            // overflow: hidden;
+            overflow: hidden;
             position: relative;
             width: 280px;
          }
@@ -95,7 +95,7 @@
          }
          
          .img-container-before {
-            width: 10%;
+            width: 100%;
          }
 
          .after,
@@ -103,16 +103,23 @@
             height: 150px;
             object-fit: fill;
             width: 280px;
+
+            &:focus {
+               outline: none;
+            }
+            
          }
 
          .slider {
-            background-color: #fff;
+            background-color: $acent;
+            cursor: e-resize;
             height: 150px;
-            left: 10%;
+            left: 100%;
+            
             position: absolute;
             top: 0;
             transform: translate(-50%, 0%);
-            width: 4px;
+            width: 10px;
             z-index: 10;
          }
 
@@ -489,7 +496,7 @@
             }            
             
             .img-container-before {
-               width: 10%;
+               width: 100%;
             }
 
             .after,

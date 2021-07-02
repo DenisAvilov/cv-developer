@@ -7,6 +7,11 @@
     position: relative;
     z-index: 1;
 
+    .top_user {
+        height: 30px;
+        position: relative;
+        width: 100%;
+    }
     .user {
         justify-content: space-between;
         
@@ -16,7 +21,10 @@
             margin-left: 25px;
         }
     }
+
+   
 }
+
 
 
 

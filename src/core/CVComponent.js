@@ -3,19 +3,24 @@ import {DomListener} from './DomListener';
 export class CVComponent extends DomListener {
   constructor($root, options = {}) {
     super($root, options.listeners, options.name)
+    this.prepare()
   }
-
-  // Возвращает шаблон компонента
   toHtml() {
     return ''
   }
-  // Назначаем слушателей для каждого компонента
+  $emit(name, fn) {
+    // return this.emitter.emit(name, fn)
+  }
+  $on(name, fn) {
+    // debugger
+    // return this.emitter.subscrube(name, fn)
+  }
+  prepare() { }
   init() {
     this.initDOMListeners()
-    
   }
-
   remuve() {
     this.remuveDomListeners()
   }
 }
+

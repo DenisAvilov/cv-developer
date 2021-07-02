@@ -1,7 +1,9 @@
-import {language} from '../../js/function/language'
-import imgSecond from './../../img/1.jpg'
+import imgSecond from './../../img/kids-and-i.png'
+import logo from './../../img/logo.png'
 
-export const headerTemplate = (props = [], logo) => {
+
+export const headerTemplate = (languages = [], selectlang = {}) => {
+  languages = languages.lang
   const creatImg = (img) => {
     const imgNode = new Image()
     imgNode.src = img
@@ -10,49 +12,58 @@ export const headerTemplate = (props = [], logo) => {
     return imgNode.outerHTML
   }
 
+
   const createLi = (options) => {
     return `
             <li>
-            <a href="${options.href}" title="${options.title}" target="_blank"> 
-            ${options.content}
-            <span class="material-icons">
-            ${options.materialIcons}</span>
-            ${options.img ? creatImg(options.img) : ''}
-            </a>           
+              <a href="${options.href}"
+              title="${options.title}"
+              target="_blank"> 
+                ${options.content}
+              <span class="material-icons">
+                ${options.materialIcons}
+              </span>
+                ${options.img ? creatImg(options.img) : ''}
+              </a>           
             </li>       
     `
   }
 
-  const test = props.map(el => {
-    return ` ${createLi(el)}`
-  }).join('')
   return `
+  <div class="top_user">
+  <div class="selectWrap">
+  ${selectlang.select.toHtml()}</div>
+  </div>
   <article class="user flex">
     <header class="flex">
         <div class="user__name">
-        <h1>${language.name}</h1>                        
-        <p> ${language.typeDevelopment} <br/> 
-            <span>${language.adress} </span>
-        </p> 
-        
-        </div>
-        <div class="icon flex">
-        <ul>
-        ${test}
-        </ul>
-        </div>       
+          <span class="dev"></span>
+            <h1>${languages.name}</h1>                        
+            <p> ${languages.typeDevelopment} <br/> 
+                <span>${languages.adress} </span>
+            </p>          
+          </div>
+          <div class="icon flex">
+            <ul>
+            ${languages.contacts.map(createLi).join('')}
+            </ul>
+          </div>
     </header>
-    <div class="user__logo">
-        <div class="img-сontainer" data-type="slider-resize">
-            <div class="img-container-after">
-                <img class="after" src="${logo}" alt="Denis Avilov">
+    <div class="user__logo" data-slide="slide">
+        <div class="img-сontainer" data-type="resize">
+              <div class="img-container-after">
+                  <img class="after" src="${imgSecond}" alt="js developer">
+              </div>
+              <div class="img-container-before" data-type="resize-before">
+                  <img class="before" src="${logo }" alt="js developer">
+              </div>
+              <div class="slider" data-slider="slider">            
             </div>
-            <div class="img-container-before">
-                <img class="before" src="${imgSecond}" alt="imgSecond">
-            </div>
-            <div class="slider" data-slader="slider"></div>
         </div>   
     </div>
+    
 </article> 
   `
 }
+
+

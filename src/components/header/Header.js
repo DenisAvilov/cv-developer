@@ -72,7 +72,7 @@ export class Header extends CvComponentStyle {
             if (x.matches) { 
               maxLench = 280
             } else {
-              maxLench = 280
+              maxLench = 300
             }
             return maxLench
           }
